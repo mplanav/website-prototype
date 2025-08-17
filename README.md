@@ -1,6 +1,6 @@
-# 🍽️ El Brases - Restaurante Online
+# 🍽️ Prototipo web para restaurante
 
-Aplicación web para el restaurante **El Brases**, desarrollada con Node.js, Express, EJS y Tailwind CSS.  
+Aplicación web para un restaurante, desarrollada con Node.js, Express, EJS y Tailwind CSS.  
 Incluye sistema de reservas, carta digital, testimonios de clientes y páginas de contacto.
 
 ---
