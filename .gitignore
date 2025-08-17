@@ -1,0 +1,43 @@
+# ───────────────
+# Dependencias
+# ───────────────
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ───────────────
+# Build / compilados
+# ───────────────
+dist/
+build/
+.cache/
+*.log
+
+# ───────────────
+# Archivos del sistema
+# ───────────────
+.DS_Store
+Thumbs.db
+
+# ───────────────
+# Variables y configuración sensible
+# ───────────────
+.env
+.env.*
+
+# ───────────────
+# Carpeta "data" (si es generada / pesada)
+# Si contiene datos de producción reales y quieres versionarlos, quita esta línea
+# ───────────────
+data/
+
+# ───────────────
+# Archivos multimedia grandes
+# (se recomienda no subir videos directamente a GitHub)
+# ───────────────
+video/
+*.mp4
+*.avi
+*.mov
+*.mkv

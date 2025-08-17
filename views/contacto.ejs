@@ -1,0 +1,86 @@
+<!-- views/contacto.ejs -->
+<section class="bg-white min-h-screen px-6 sm:px-10 md:px-20 py-16">
+  <h1 class="section-title text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-10 text-center">
+    <%= traducciones.contactoTitulo || "Contacta'ns" %>
+  </h1>
+
+  <form 
+    action="<%= langPath %>/contacto" 
+    method="POST" 
+    class="max-w-2xl mx-auto space-y-8 bg-white p-8 rounded-3xl shadow-lg"
+    novalidate
+  >
+    <div>
+      <label for="nombre" class="form-label block text-gray-900 mb-3 font-medium text-lg">
+        <%= traducciones.nombreEtiqueta || 'Nom' %>
+      </label>
+      <input
+        id="nombre"
+        type="text"
+        name="nombre"
+        required
+        placeholder="<%= traducciones.nombrePlaceholder || 'Tu nombre' %>"
+        class="form-input w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500 transition"
+        aria-required="true"
+      />
+    </div>
+
+    <div>
+      <label for="email" class="form-label block text-gray-900 mb-3 font-medium text-lg">
+        <%= traducciones.emailEtiqueta || 'Correu Electrònic' %>
+      </label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        required
+        placeholder="<%= traducciones.emailPlaceholder || 'tu@email.com' %>"
+        class="form-input w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500 transition"
+        aria-required="true"
+      />
+    </div>
+
+    <div>
+      <label for="mensaje" class="form-label block text-gray-900 mb-3 font-medium text-lg">
+        <%= traducciones.mensajeEtiqueta || 'Missatge' %>
+      </label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows="5"
+        required
+        placeholder="<%= traducciones.mensajePlaceholder || 'Escribe tu mensaje aquí...' %>"
+        class="form-input w-full p-4 border border-gray-300 rounded-xl resize-y focus:outline-none focus:ring-4 focus:ring-blue-500 transition"
+        aria-required="true"
+      ></textarea>
+    </div>
+
+    <button 
+      type="submit" 
+      class="form-button w-full py-4 text-lg font-semibold bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-500 transition duration-300"
+      aria-label="<%= traducciones.enviarMensajeBtn || 'Enviar Missatge' %>"
+    >
+      <%= traducciones.enviarMensajeBtn || 'Enviar Missatge' %>
+    </button>
+  </form>
+
+  <div class="max-w-4xl mx-auto mt-20 text-center px-4 sm:px-0">
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
+      <%= traducciones.encuentranosAquiTitulo || "Troba'ns aquí:" %>
+    </h2>
+    <a 
+      href="https://maps.app.goo.gl/pm8Vb3Ckw2aGkTR56" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      title="<%= traducciones.abrirGoogleMaps || 'Visualitzar al Google Maps' %>"
+      class="inline-block"
+    >
+      <img
+        src="/images/mapa.jpg"
+        alt="<%= traducciones.mapaAlt || 'Mapa ubicación Restaurante' %>"
+        class="max-w-full h-auto mx-auto rounded-3xl shadow-xl border border-gray-200"
+        loading="lazy"
+      />
+    </a>
+  </div>
+</section>

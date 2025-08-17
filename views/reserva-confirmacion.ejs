@@ -1,0 +1,17 @@
+<h1 class="section-title text-center mb-6 text-2xl md:text-3xl lg:text-4xl font-semibold">
+  <%= traducciones.reservaConfirmacionTitulo || '¡Solicitud de reserva enviada!' %>
+</h1>
+
+<p class="text-gray-700 text-center max-w-xl mx-auto mb-8 text-lg md:text-xl leading-relaxed">
+  <%= traducciones.reservaConfirmacionGracias || 'Gracias' %>, <%= nombre %>. 
+  <%= traducciones.reservaConfirmacionMensajeParte1 || 'Hemos recibido tu reserva para' %> 
+  <strong class="font-semibold text-indigo-600"><%= personas %> <%= traducciones.reservaConfirmacionPersonasPlural || 'persona' %><%= personas > 1 ? traducciones.reservaConfirmacionPluralS || 's' : '' %></strong> 
+  <%= traducciones.reservaConfirmacionMensajeParte2 || 'el día' %> <strong class="font-semibold text-indigo-600"><%= fechaFormateada %></strong>. 
+  <%= traducciones.reservaConfirmacionMensajeParte3 || 'Por favor, estén atentos al correo donde recibirán la respuesta.' %>
+</p>
+
+<div class="text-center">
+  <a href="/" class="btn-primary inline-block px-6 py-3 text-lg md:text-xl">
+    <%= traducciones.volverInicio || 'Volver al inicio' %>
+  </a>
+</div>

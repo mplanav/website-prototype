@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title ? `${title} - Restaurant El Brases` : 'Restaurant El Brases' %></title>
+  <meta name="description" content="<%= description || 'Disfruta de la mejor comida tradicional en nuestro restaurante en Barcelona. Reserva tu mesa y conoce nuestra carta.' %>" />
+  
+  <!-- Open Graph (para redes sociales) -->
+  <meta property="og:title" content="<%= title ? `${title} - Restaurant El Brases` : 'Restaurant El Brases' %>" />
+  <meta property="og:description" content="<%= description || 'Disfruta de la mejor comida tradicional en Restaurant El Brases. Reserva tu mesa y conoce nuestra carta.' %>" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:url" content="https://elbrases.com/<%= page || '' %>" />
+  <meta property="og:image" content="https://elbrases.com/images/og-image.jpg" />
+
+  <!-- Schema.org JSON-LD para negocio local -->
+<!-- Schema.org JSON-LD para negocio local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "El Brases",
+  "image": "https://elbrases.com/images/og-image.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Mayor, 123",
+    "addressLocality": "Barcelona",
+    "addressRegion": "Barcelona",
+    "postalCode": "08001",
+    "addressCountry": "ES"
+  },
+  "telephone": "+34 93 123 45 67",
+  "priceRange": "€€",
+  "servesCuisine": ["Mediterránea", "Tradicional", "Cocina a la brasa"],
+  "url": "https://elbrases.com",
+  "menu": "https://elbrases.com/carta",
+  "acceptsReservations": "True",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "13:00",
+      "closes": "23:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "13:00",
+      "closes": "17:00"
+    }
+  ],
+  "description": "Restaurante especializado en cocina tradicional a la brasa con ingredientes frescos y locales. Fundado en 1995, El Brases ofrece un ambiente familiar y platos con sabor auténtico."
+}
+</script>
+
+<!-- Estilos -->
+<link href="/styles.css" rel="stylesheet" />
+<link rel="icon" href="/favicon.ico" />
+<!-- Tipografía cálida -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-[#f9f5f0] text-gray-800 font-sans leading-relaxed antialiased">
+
+  <!-- Fondo de Hero con filtro cálido -->
+  <div class="hero-bg fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/hero-bg.jpg');">
+    <div class="absolute inset-0 bg-[#3e1f0f]/70"></div>
+  </div>
+<!-- Navbar -->
+<nav class="navbar bg-[#3e1f0f]/95 fixed top-0 left-0 w-full shadow-md z-50">
+  <div class="container mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <a href="/" class="branding text-white text-2xl font-serif font-semibold tracking-wide">
+      El Brases
+    </a>
+
+    <!-- Menú Desktop -->
+    <ul class="hidden lg:flex space-x-8">
+      <li><a href="/#inicio" class="text-white hover:text-[#f3b09a] transition">Inici</a></li>
+      <li><a href="/#historia" class="text-white hover:text-[#f3b09a] transition">La Nostra Història</a></li>
+      <li><a href="/#especialidad" class="text-white hover:text-[#f3b09a] transition">Cuina i Tradició</a></li>
+      <li><a href="/carta" class="text-white hover:text-[#f3b09a] transition">Carta</a></li>
+      <li><a href="/reserva" class="text-white hover:text-[#f3b09a] transition">Reserva</a></li>
+      <li><a href="/contacto" class="text-white hover:text-[#f3b09a] transition">Contacta'ns</a></li>
+    </ul>
+
+    <!-- Botón Hamburguesa (solo móvil) -->
+    <button id="menu-toggle" class="lg:hidden flex flex-col space-y-1 focus:outline-none">
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Panel lateral del menú móvil -->
+<div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-[#3e1f0f] transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col">
+  <!-- Botón cerrar -->
+  <button id="menu-close" class="text-white text-3xl p-4 self-end focus:outline-none">&times;</button>
+
+  <!-- Opciones -->
+  <nav class="flex flex-col mt-4 space-y-2 px-6">
+    <a href="/#inicio" class="py-3 text-white hover:bg-[#5a3220] transition rounded">Inici</a>
+    <a href="/#historia" class="py-3 text-white hover:bg-[#5a3220] transition rounded">La Nostra Història</a>
+    <a href="/#especialidad" class="py-3 text-white hover:bg-[#5a3220] transition rounded">Cuina i Tradició</a>
+    <a href="/carta" class="py-3 text-white hover:bg-[#5a3220] transition rounded">Carta</a>
+    <a href="/reserva" class="py-3 text-white hover:bg-[#5a3220] transition rounded">Reserva</a>
+    <a href="/contacto" class="py-3 text-white hover:bg-[#5a3220] transition rounded">Contacta'ns</a>
+  </nav>
+</div>
+
+  <% var isHome = typeof isHome !== 'undefined' ? isHome : false; %>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 py-10 pt-24 relative z-10">
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#f3eee9] text-center text-sm text-gray-600 py-6 border-t-2 border-[#c1440e] relative z-10">
+    &copy; <%= new Date().getFullYear() %> El Brases. Todos los derechos reservados.
+  </footer>
+
+  <!-- Scroll suave para anclas internas -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenu.classList.add('translate-x-0');
+  });
+
+  menuClose.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
+  });
+</script>
+
+</body>
+</html>

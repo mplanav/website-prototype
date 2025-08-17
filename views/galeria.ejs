@@ -1,0 +1,19 @@
+<!-- views/galeria.ejs -->
+<section class="px-4 md:px-10 lg:px-20 py-16 bg-white">
+  <h1 class="section-title text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 mb-12">
+    <%= traducciones.galeriaTitulo || 'Galería' %>
+  </h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <% fotos.forEach(foto => { %>
+      <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <img
+          src="<%= foto %>"
+          alt="<%= traducciones.galeriaAlt || 'Foto restaurante' %>"
+          class="image-style w-full h-72 object-cover transition-transform duration-300 hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+    <% }) %>
+  </div>
+</section>

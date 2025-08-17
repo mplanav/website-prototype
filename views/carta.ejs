@@ -1,0 +1,81 @@
+<!-- views/carta.ejs -->
+<div class="bg-white min-h-screen px-4 sm:px-6 md:px-10 lg:px-20 py-8">
+  <section id="carta">
+    <h1 class="section-title text-center text-2xl sm:text-3xl font-bold py-6"><%= traducciones.cartaTitulo || 'La nostra Carta' %></h1>
+
+    <% const categorias = [
+      { key: 'entrantes', titulo: 'Entrants' },
+      { key: 'platos_principales', titulo: 'Plats principals' },
+      { key: 'postres', titulo: 'Postres' }
+    ]; %>
+
+    <% categorias.forEach((categoria, i) => {
+      const platosCategoria = platos.filter(p => p.categoria === categoria.key);
+      if (platosCategoria.length > 0) { %>
+
+      <div class="mb-10 border border-gray-300 rounded-xl overflow-hidden shadow-lg">
+        <div class="px-6 py-4 bg-gray-100 categoria-header cursor-pointer select-none <%= i === 0 ? 'active' : '' %>">
+          <h2 class="text-xl sm:text-2xl font-semibold flex justify-between items-center">
+            <span><%= categoria.titulo %></span>
+            <span class="toggle-icon"><%= i === 0 ? '▲' : '▼' %></span>
+          </h2>
+        </div>
+
+        <div class="p-6 bg-white categoria-content <%= i === 0 ? 'active' : '' %>">
+          <div class="cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% platosCategoria.forEach(plato => { %>
+              <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="<%= plato.imagen %>" alt="<%= plato.nombre %>" class="card-image w-full h-48 object-cover" loading="lazy" />
+                <div class="p-4">
+                  <h3 class="card-title text-lg sm:text-xl font-semibold"><%= plato.nombre %></h3>
+
+                  <% if (plato.ingredientes && plato.ingredientes.length > 0) { %>
+                    <p class="text-sm italic text-gray-500 mb-2">
+                      <%= traducciones.ingredientesLabel || 'Ingredients:' %> <%= plato.ingredientes.join(', ') %>
+                    </p>
+                  <% } else { %>
+                    <p class="text-sm italic text-gray-400 mb-2">
+                      <%= traducciones.noIngredientes || 'No especificats' %>
+                    </p>
+                  <% } %>
+
+                  <p class="card-description text-sm text-gray-700 mb-4"><%= plato.descripcion %></p>
+
+                  <p class="card-price text-lg font-semibold text-gray-900">
+                    <%= traducciones.monedaSimbolo || '€' %><%= plato.precio %>
+                  </p>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+
+    <% } }) %>
+  </section>
+</div>
+
+<script>
+  // Toggle desplegable categorías
+  document.querySelectorAll('.categoria-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const activeHeader = document.querySelector('.categoria-header.active');
+      const activeContent = document.querySelector('.categoria-content.active');
+
+      // Si hay otro abierto y no es este, ciérralo
+      if (activeHeader && activeHeader !== header) {
+        activeHeader.classList.remove('active');
+        activeHeader.querySelector('.toggle-icon').textContent = '▼';
+      }
+      if (activeContent && activeContent !== header.nextElementSibling) {
+        activeContent.classList.remove('active');
+      }
+
+      // Alterna el actual
+      header.classList.toggle('active');
+      header.querySelector('.toggle-icon').textContent = header.classList.contains('active') ? '▲' : '▼';
+
+      header.nextElementSibling.classList.toggle('active');
+    });
+  });
+</script>

@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === BASE === */
+@layer base {
+  html, body {
+    background: transparent;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #3e2c1c;
+  }
+
+  p {
+    @apply text-gray-700;
+  }
+
+  a {
+    @apply text-red-700 hover:text-red-600 transition;
+  }
+}
+
+/* === HERO === */
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  background: url('/images/hero-bg.jpg') center/cover no-repeat;
+  pointer-events: none;
+  z-index: -2;
+}
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 248, 241, 0.65);
+  z-index: -1;
+}
+
+/* === COMPONENTES REUTILIZABLES === */
+@layer components {
+  .section-title {
+    @apply text-4xl sm:text-5xl font-bold mb-8 text-center text-[#4b2e1e];
+  }
+
+  /* Botones */
+  .btn-primary {
+    @apply bg-[#8b3a2f] text-white px-6 py-3 rounded-full font-medium hover:bg-[#a64538] transition;
+  }
+
+  /* Cards generales */
+  .card {
+    @apply bg-white rounded-2xl shadow-md overflow-hidden transition hover:shadow-xl hover:scale-[1.02];
+  }
+  .card-image {
+    @apply w-full object-cover;
+    height: 12rem;
+  }
+  .card-title {
+    @apply text-2xl font-semibold text-[#4b2e1e] mb-2;
+  }
+
+  /* Grids adaptables */
+  .cards-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  /* Formularios */
+  .form-label {
+    @apply block mb-2 text-base font-medium text-[#4b2e1e];
+  }
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8b3a2f] transition;
+  }
+  .form-button {
+    @apply btn-primary w-full mt-6;
+  }
+}
+
+/* === CARTA === */
+.categoria-header {
+  @apply px-6 py-4 bg-gray-100 cursor-pointer select-none flex justify-between items-center;
+}
+.categoria-header.active {
+  @apply bg-[#fce9e4];
+}
+.categoria-header .toggle-icon {
+  @apply ml-4 text-lg;
+}
+.categoria-content {
+  display: none;
+  padding: 1.5rem;
+}
+.categoria-content.active {
+  display: block;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  /* Ajustar títulos para móvil */
+  .section-title {
+    @apply text-3xl;
+  }
+
+  /* responsive para la carta */
+  .card {
+    @apply flex-col items-center p-3;
+  }
+  
+  .card-title {
+    @apply text-center text-lg font-semibold mb-3;
+  }
+
+  .card-content { 
+    @apply grid grid-cols-[auto,1fr] gap-3 w-full;
+  }
+
+  .card-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-ingredients {
+    @apply text-sm italic text-gray-500;
+  }
+  .card-price {
+    @apply text-sm font-semibold text-red-700 mt-auto;
+  }
+
+  /* Formularios en móvil */
+  form {
+    @apply p-4;
+  }
+  .form-input {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  .form-button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* === TABLET === */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .cards-grid {
+    @apply grid-cols-2;
+  }
+}
+
+
+.logo {  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
